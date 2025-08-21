@@ -2,7 +2,7 @@
 
 Interactive WebXR scene built in 2021 with A-Frame. Walk through a small cabin, interact with objects, and monitor performance.
 
-**Live demo:** https://axeltbone.github.io/cozy-cottage-2021/
+**Live demo:** https://axeltbone.github.io/cozy-cottage-aframe-2021/
 
 ---
 
