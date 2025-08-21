@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-fps-counter-component@1.0.1/dist/aframe-fps-counter-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+    <title>Project: Cozy Cottage</title>
+  </head>
+  <body>
+    <a-scene
+      physics="gravity: -9.8; friction: 0.1; restitution: 0.5; driver: worker;"
+    >
+      <a-assets>
+        <a-asset-item
+          id="cottage"
+          response-type="arraybuffer"
+          src="models/misc/cottage/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="crate"
+          response-type="arraybuffer"
+          src="models/misc/crate/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="chandelier"
+          response-type="arraybuffer"
+          src="models/misc/chandelier/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="sidechan"
+          response-type="arraybuffer"
+          src="models/misc/sidechan/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mirror"
+          response-type="arraybuffer"
+          src="models/misc/mirror/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="fireplace"
+          response-type="arraybuffer"
+          src="models/misc/fireplace/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="sofa"
+          response-type="arraybuffer"
+          src="models/misc/sofa/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="bookcase"
+          response-type="arraybuffer"
+          src="models/misc/bookcase/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="magicbook"
+          response-type="arraybuffer"
+          src="models/misc/magicbook/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="ladder"
+          response-type="arraybuffer"
+          src="models/misc/ladder/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="rug"
+          response-type="arraybuffer"
+          src="models/misc/rug/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="bed"
+          response-type="arraybuffer"
+          src="models/misc/bed/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="cloud"
+          response-type="arraybuffer"
+          src="models/misc/cloud/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="shieldone"
+          response-type="arraybuffer"
+          src="models/buttons/shieldone/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="shieldtwo"
+          response-type="arraybuffer"
+          src="models/buttons/shieldtwo/scene.gltf"
+        ></a-asset-item>
+        <audio id="nighttrack" src="audio/music/nighttheme.mp3"></audio>
+        <audio id="river" src="audio/amb/river.mp3"></audio>
+        <audio id="forest" src="audio/amb/forest.mp3"></audio>
+        <audio id="sound-effect-1" src="audio/button/soundeffect1.mp3"></audio>
+        <audio id="fairy-effect" src="audio/button/fairy.mp3"></audio>
+        <img id="sky" src="images/sky.png" />
+        <img id="groundcover" src="images/groundcover/groundcover.png" />
+      </a-assets>
+      <!-- Camera -->
+      <a-entity
+        camera
+        position="27.618 7.500 4.849"
+        rotation="0 90 0"
+        universal-controls
+        kinematic-body
+        fps-counter
+        wasd-controls="acceleration: 150;"
+        look-controls="pointerLockEnabled: true;"
+        ><a-cursor color="white"></a-cursor
+      ></a-entity>
+
+      <!-- Ground -->
+      <a-plane
+        visible="false"
+        position="17.5 7  7"
+        scale="65 55"
+        repeat="6.25 6.25"
+        rotation="-90 0 0"
+        static-body
+      ></a-plane>
+      <a-plane
+        src="#groundcover"
+        position="17.5 0 7"
+        scale="65 55"
+        repeat="6.25 6.25"
+        rotation="-90 0 0"
+        static-body
+      ></a-plane>
+
+      <!-- Skydome -->
+      <a-sky
+        src="#sky"
+        position="0 -675 0"
+        scale="15 15 15"
+        animation="property: rotation; to: 360 360 0; dur: 2000000; easing: linear; loop: true;"
+      ></a-sky>
+
+      <!-- River Sound -->
+      <a-box
+        position="21.062 6.052 -34.266"
+        visible="false"
+        sound="src: #river; autoplay: on; refDistance: 10; volume: 2; loop: on;"
+        static-body
+      ></a-box>
+
+      <!-- Cottage -->
+      <a-entity
+        light="type: ambient; color: #D3D3D3; intensity: 0.6"
+      ></a-entity>
+      <a-entity
+        gltf-model="#cottage"
+        position="31.5 2 28"
+        scale="4 4 4"
+        rotation="0 95.9 0"
+      ></a-entity>
+      <a-plane
+        position="17.5 0.7 7"
+        visible="false"
+        scale="65 55"
+        repeat="6.25 6.25"
+        rotation="-90 0 0"
+      ></a-plane>
+
+      <!-- Chandelier -->
+      <a-entity
+        gltf-model="#chandelier"
+        position="19.595 13.088 1.425"
+        scale="0.25 0.3 0.25"
+      ></a-entity>
+      <a-entity
+        position="19.462 14.040 1.301"
+        light="type: point; color: #E09D37; intensity: 3; distance: 20;"
+      ></a-entity>
+      <a-entity
+        position="19.595 14.938 1.425"
+        scale="0.08 0.05 0.08"
+        particle-system="preset: dust; size: 0.25; particleCount: 50; accelerationSpread: 1 0 1; type: sphere; maxAge: 4.5; opacity: 0.5;"
+      ></a-entity>
+
+      <!-- Crate 1 -->
+      <a-entity
+        gltf-model="#crate"
+        position="3.856 0.75 4"
+        scale="0.0035 0.0035 0.0035"
+        dynamic-body
+      ></a-entity>
+
+      <!-- Mirror -->
+      <a-entity
+        id="cloud-button"
+        gltf-model="#mirror"
+        position="0.856 0.489 -0.386"
+        scale="0.045 0.04 0.045"
+        rotation="0 90 0"
+      ></a-entity>
+      <a-entity
+        position="4.389 12.018 -0.376"
+        light="type: point; color: #9EFDFF ; intensity: 2; distance: 15;"
+        animation="property: position; to: 4.389 6.018 -0.376; dur: 15000; easing: linear;"
+      ></a-entity>
+
+      <!-- Bookcase (Bed-side)-->
+      <a-entity
+        gltf-model="#bookcase"
+        position="11.936 0.630 -13.801"
+        scale="0.15 0.15 0.15"
+      ></a-entity>
+      <a-entity
+        position="11.514 6.603 -11.857"
+        light="type: point; color: #A433E1 ; intensity: 3.5; distance: 5;"
+      ></a-entity>
+
+      <!-- Bed -->
+      <a-entity
+        gltf-model="#bed"
+        position="28.126 0.569 -14.204"
+        scale="0.05 0.06 0.06"
+      ></a-entity>
+
+      <!-- Alchemy Station -->
+      <a-entity
+        gltf-model="#magicbook"
+        position="21.033 0.544 -12.335"
+        scale="4 4.25 4"
+        rotation="0 180 0"
+      ></a-entity>
+      <a-entity
+        position="18.901 3.832 -11.325"
+        scale="0.08 0.05 0.08"
+        particle-system="preset: dust; color:#E09D37; size: 0.25; particleCount: 50; accelerationSpread: 2 2 2; type: sphere; maxAge: 4.5; opacity: 1;"
+      ></a-entity>
+      <a-entity
+        position="18.925 5.257 -11.193"
+        light="type: point; color: #16DA16 ; intensity: 5; distance: 7.5;"
+      ></a-entity>
+      <a-entity
+        position="18.925 5.257 -11.193"
+        light="type: spot; color: #16DA16 ; intensity: 10; distance: 5.28; decay: 2;"
+      ></a-entity>
+
+      <!-- Shields -->
+      <a-entity
+        id="sound-shield"
+        gltf-model="#shieldone"
+        position="31.470 8.842 -8.982"
+        scale="2.5 2.5 2"
+        rotation="0 -90 0"
+      ></a-entity>
+      <a-entity
+        id="toggle-music-shield"
+        gltf-model="#shieldtwo"
+        position="31.470 6.430 -2.977"
+        scale="0.095 0.095 0.09"
+        rotation="0 -90 0"
+      ></a-entity>
+
+      <!-- Ladder -->
+      <a-entity
+        gltf-model="#ladder"
+        position="6.312 -6.466 6.046"
+        scale="0.05 0.06 0.06"
+        rotation="-25.000 220.000 25.000"
+      ></a-entity>
+
+      <!-- Side Chandelier -->
+      <a-entity
+        gltf-model="#sidechan"
+        position="11.441 5.534 24.507"
+        scale="5 5 5"
+      ></a-entity>
+      <a-entity
+        position="11.430 7.696 24.521"
+        light="type: point; color: #E09D37 ; intensity: 2; distance: 10;"
+      ></a-entity>
+      <a-entity
+        position="11.430 8.696 24.521"
+        particle-system="preset: dust; size: 0.25; particleCount: 50; accelerationSpread: 1 0 1; type: sphere; maxAge: 4.5; opacity: 0.5;"
+        scale="0.08 0.05 0.08"
+      ></a-entity>
+
+      <!-- Bookcase (Fireplace-side) -->
+      <a-entity
+        gltf-model="#bookcase"
+        position="30.745 0.630 24.369"
+        scale="0.14 0.15 0.15"
+        rotation="0 -90 0"
+      ></a-entity>
+      <a-entity
+        position="29.539 6.560 23.941"
+        light="type: point; color: #01E0FE ; intensity: 3.5; distance: 5;"
+      ></a-entity>
+
+      <!-- Fireplace -->
+      <a-entity
+        gltf-model="#fireplace"
+        position="27.936 4.539 16.962"
+        scale="0.04 0.04 0.04"
+        rotation="0 -90 0"
+      ></a-entity>
+      <a-entity
+        gltf-model="#sofa"
+        position="11.416 0.730 16.701"
+        scale="7 7 7"
+        rotation="0 90 0"
+      ></a-entity>
+      <a-entity
+        gltf-model="#rug"
+        position="18.729 0.730 8.150"
+        scale="0.025 0 0.06"
+      ></a-entity>
+    </a-scene>
+    <script>
+      document
+        .getElementById("cloud-button")
+        .addEventListener("click", playFairyEffect);
+      document
+        .getElementById("sound-shield")
+        .addEventListener("click", playSoundEffect1);
+      document
+        .getElementById("toggle-music-shield")
+        .addEventListener("click", toggleMusic);
+      var soundEffect1 = document.getElementById("sound-effect-1");
+      var fairyEffect = document.getElementById("fairy-effect");
+      var backgroundMusic = document.getElementById("nighttrack");
+      var forestAmb = document.getElementById("forest");
+      forestAmb.setAttribute("autoplay", "on");
+      forestAmb.setAttribute("loop", "true");
+      backgroundMusic.setAttribute("autoplay", "on");
+      backgroundMusic.setAttribute("loop", "true");
+
+      function playFairyEffect() {
+        fairyEffect.play();
+      }
+
+      function playSoundEffect1() {
+        soundEffect1.play();
+      }
+
+      function toggleMusic() {
+        if (!backgroundMusic.paused) {
+          backgroundMusic.pause();
+        } else {
+          backgroundMusic.play();
+        }
+      }
+    </script>
+  </body>
+</html>

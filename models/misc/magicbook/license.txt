@@ -1,0 +1,11 @@
+Model Information:
+* title:	The Witch's Altar
+* source:	https://sketchfab.com/3d-models/the-witchs-altar-4d1c5da60fff4d1e9cbb2ddf7407b547
+* author:	elunabear (https://sketchfab.com/elunabear)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "The Witch's Altar" (https://sketchfab.com/3d-models/the-witchs-altar-4d1c5da60fff4d1e9cbb2ddf7407b547) by elunabear (https://sketchfab.com/elunabear) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
