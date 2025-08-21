@@ -1,4 +1,4 @@
-# Cozy Cottage (A-Frame 1.0.4)
+# Cozy Cottage (A-Frame 1.0.4) — Archived
 
 Interactive WebXR scene built in 2021 with A-Frame. Walk through a small cabin, interact with objects, and monitor performance.
 
